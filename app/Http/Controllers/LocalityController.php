@@ -49,11 +49,11 @@ class LocalityController extends Controller
         return response()->json("Listo! - $q_localities Localidades");
     }
 
-    public function importLocalities()
+    public function importLocalities($from, $to)
     {
         ini_set('max_execution_time', 300*4);
         ini_set('memory_limit', '-1');
-        Excel::import(new LocalitiesImport, storage_path('app/excels/CPdescarga.xls'));
+        Excel::import(new LocalitiesImport($from, $to), storage_path('app/excels/CPdescarga.xls'));
 
         return "Listo! Se importó!";
     }

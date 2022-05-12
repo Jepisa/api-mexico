@@ -9,10 +9,19 @@ use Maatwebsite\Excel\Concerns\SkipsUnknownSheets;
 
 class LocalitiesImport implements WithMultipleSheets, SkipsUnknownSheets
 {
+    public $from;
+    public $to;
+
+    public function __construct($from, $to)
+    {
+        $this->from = $from;
+        $this->to = $to;
+    }
+
     public function sheets(): array
     {
         $arraySheet = [];
-        for ($i=1; $i <= 32; $i++) { 
+        for ($i = $this->from; $i <= $this->to; $i++) {
             $arraySheet[$i] = new LocalitySheetImport();
         }
 
