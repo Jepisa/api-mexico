@@ -1,19 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\LocalityController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('zip-codes/{zip_code}', [LocalityController::class, 'show']);
+Route::get('import-localidades-from-excel', [LocalityController::class, 'importLocalities']);
+Route::get('save-localities-in-cache', [LocalityController::class, 'saveLocalitiesInCache']);
