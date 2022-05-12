@@ -11,6 +11,10 @@ class Settlement extends Model
     protected $fillable = ['key', 'name', 'zone_type','locality_id', 'settlement_type_id'];
     protected $hidden = ['id', 'locality_id', 'settlement_type_id', 'created_at', 'updated_at'];
 
+    protected $casts = [
+        'key' => 'integer',
+    ];
+
     public function settlement_type()
     {
         return $this->belongsTo(SettlementType::class, 'settlement_type_id', 'id');

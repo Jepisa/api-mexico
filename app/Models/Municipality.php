@@ -11,7 +11,6 @@ class Municipality extends Model
     protected $fillable = ['key', 'name'];
     protected $hidden = ['id'];
 
-
     public function localities()
     {
         return $this->hasMany(Locality::class, 'municipality_id', 'id');

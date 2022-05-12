@@ -11,6 +11,10 @@ class FederalEntity extends Model
     public $incrementing = false;
 
     protected $fillable = ['key', 'name', 'code'];
+    protected $casts = [
+        'key' => 'integer',
+    ];
+
 
     public function localities()
     {
