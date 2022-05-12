@@ -18,11 +18,11 @@ class Locality extends Model
 
     public function settlements()
     {
-        return $this->hasMany(Settlement::class, 'locality_id', 'id');
+        return $this->hasMany(Settlement::class, 'locality_id', 'id')->orderBy('key');
     }
 
     public function municipality()
     {
-        return $this->belongsTo(Municipality::class, 'municipality_id', 'key');
+        return $this->belongsTo(Municipality::class, 'municipality_id', 'id');
     }
 }

@@ -10,6 +10,7 @@ class SettlementType extends Model
     protected $table = 'settlement_types';
     protected $primaryKey = 'id';
     protected $fillable = ['name'];
+    protected $hidden = ['id'];
 
     public function settlements()
     {

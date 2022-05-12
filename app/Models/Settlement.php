@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Settlement extends Model
 {
     protected $table = 'settlements';
-    protected $primaryKey = 'key';
-    public $incrementing = false;
+    protected $primaryKey = 'id';
     protected $fillable = ['key', 'name', 'zone_type','locality_id', 'settlement_type_id'];
-    protected $hidden = ['locality_id', 'settlement_type_id', 'created_at', 'updated_at'];
+    protected $hidden = ['id', 'locality_id', 'settlement_type_id', 'created_at', 'updated_at'];
 
     public function settlement_type()
     {

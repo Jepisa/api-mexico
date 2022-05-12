@@ -14,7 +14,8 @@ class CreateSettlementsTable extends Migration
     public function up()
     {
         Schema::create('settlements', function (Blueprint $table) {
-            $table->id('key');
+            $table->id();
+            $table->integer('key');
             $table->string('name');
             $table->string('zone_type');
             
@@ -25,6 +26,8 @@ class CreateSettlementsTable extends Migration
             $table->foreign('settlement_type_id')->references('id')->on('settlement_types');
 
             $table->timestamps();
+
+            // $table->index('key');
         });
     }
 

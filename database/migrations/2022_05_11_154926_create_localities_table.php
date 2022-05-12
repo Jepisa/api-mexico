@@ -22,7 +22,7 @@ class CreateLocalitiesTable extends Migration
             $table->foreign('federal_entity_id')->references('key')->on('federal_entities');
 
             $table->unsignedBigInteger('municipality_id');
-            $table->foreign('municipality_id')->references('key')->on('municipalities');
+            $table->foreign('municipality_id')->references('id')->on('municipalities');
 
             $table->timestamps();
             $table->index('zip_code');
