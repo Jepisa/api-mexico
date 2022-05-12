@@ -10,6 +10,9 @@ class Municipality extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['key', 'name'];
     protected $hidden = ['id'];
+    protected $casts = [
+        'key' => 'integer',
+    ];
 
     public function localities()
     {
