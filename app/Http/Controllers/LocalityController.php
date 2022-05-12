@@ -12,7 +12,15 @@ class LocalityController extends Controller
 {
     public function show($zip_code)
     {
-        $locality = Cache::get("locality-$zip_code");
+        $locality = Cache::rememberForever("locality-$zip_code", function () use ($zip_code) {
+            return Locality::where('zip_code', $zip_code)
+                ->with([
+                    'federal_entity:key,name,code',
+                    'settlements',
+                    'settlements.settlement_type:id,name',
+                    'municipality:id,key,name'
+                ])->firstOrFail();
+        });
         return response()->json($locality);
     }
 
