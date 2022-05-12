@@ -51,7 +51,7 @@ class LocalityController extends Controller
 
     public function importLocalities()
     {
-        ini_set('max_execution_time', 300);
+        ini_set('max_execution_time', 300*4);
         ini_set('memory_limit', '-1');
         Excel::import(new LocalitiesImport, storage_path('app/excels/CPdescarga.xls'));
 
