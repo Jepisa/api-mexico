@@ -42,7 +42,7 @@ class LocalitySheetImport implements ToCollection
             $locality = new Locality;
             $locality->zip_code = $row[0];
             $locality->locality = !isset($row[5]) ? '' : $row[5];
-            $locality->federal_entity_id = FederalEntity::updateOrCreate(
+            $locality->federal_entity_id = FederalEntity::firstOrCreate(
                                                 [
                                                     'name' => $row[4],
                                                 ],
@@ -51,7 +51,7 @@ class LocalitySheetImport implements ToCollection
                                                     'code' => $row[9]
                                                 ]
                                             )->key;
-            $locality->municipality_id = Municipality::updateOrCreate(
+            $locality->municipality_id = Municipality::firstOrCreate(
                                                 [
                                                     'name' => $row[3]
                                                 ], 
@@ -64,14 +64,14 @@ class LocalitySheetImport implements ToCollection
         }
 
         
-        $locality->settlements()->updateOrCreate(
+        $locality->settlements()->firstOrCreate(
             [
                 'key' => $row[12], //0345  //0345
                 'name' => $row[1], //Villas de Don Antonio  //Panamericano
             ],
             [
                 'zone_type' => $row[13], 
-                'settlement_type_id' => SettlementType::updateOrCreate(['name' => $row[2]])->id
+                'settlement_type_id' => SettlementType::firstOrCreate(['name' => $row[2]])->id
             ]
         );
         
